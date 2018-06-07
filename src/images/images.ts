@@ -2,17 +2,17 @@ import { customElement, bindable, bindingMode, observable } from "aurelia-framew
 import { Service } from "../service"
 @customElement("images")
 export class images {
-    @bindable({ defaultBindingMode: bindingMode.twoWay }) file: File;
-    files: File[];
+    @bindable({ defaultBindingMode: bindingMode.twoWay }) file;
+    files=[];
     totalElement: number = 0;
     service;
     constructor(service: Service) {
         this.service = service;
-        this.files=(this.service.getSession("file"));
+        this.files=this.service.getSession("file");
         this.totalElement=this.files.length;
     }
     fileChanged() {
-        this.files.push(this.file);
+        this.files.push(this.service.push(this.file));
         this.totalElements();
     }
     clearList() {
@@ -30,7 +30,7 @@ export class images {
         //Devo usare la funzione sotto perchè devo considerarlo come un unico oggetto.
         let trovato : boolean = true;
         while(trovato) {
-            let targetedIndex = this.files.findIndex(x => x[0].checkedForDelete== true);
+            let targetedIndex = this.files.findIndex(x => x.checkedForDelete== true);
             if (targetedIndex == -1) {
                 trovato = false;
             } else {

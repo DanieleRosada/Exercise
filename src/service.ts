@@ -6,7 +6,8 @@
         'lastModifiedDate' : this.lastModifiedDate,
         'name'             : this.name,
         'size'             : this.size,
-        'type'             : this.type 
+        'type'             : this.type,
+        'checkedForDelete' : false 
         }
     }
 };
@@ -16,12 +17,10 @@ export class Service {
 
     }
     setSession(key, values) {
-        this.removeSession(key);
-
         let files: Array<any> = [];
         for (let i = 0; i < values.length; i++) {
 
-            files.push(values[i][0]);
+            files.push(values[i]);
         }
 
         console.log("service::setSession::files", files);
@@ -48,11 +47,14 @@ export class Service {
                 x.push(objs[i]);
                 console.log(objs[i]);
             }
-            console.log("Sono x"+x);
            return x;
         }
         return [];
 
+    }
+
+    push(obj){
+        return JSON.parse(JSON.stringify(obj));
     }
 
 }
