@@ -1,0 +1,18 @@
+<template>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Welcome</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+          <ul repeat.for="nav of router.navigation">
+              <li class="${nav.isActive ? 'active' : ''}"><a href.bind="nav.href">${nav.title}</a></li>
+          </ul>
+          <router-view></router-view>
+      </div>
+    </div>
+  </div>
+
+</template>

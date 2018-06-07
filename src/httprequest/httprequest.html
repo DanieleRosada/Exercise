@@ -1,0 +1,40 @@
+<template>
+        <div class="container">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3>GET</h3>
+                  </div>
+                  <div class="col-md-3" repeat.for="data of datahttp">
+                    <p>${data.Id} => ${data.Username}</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3>POST</h3>
+                    <form role="form" submit.trigger="insert(textInsertPost)">
+                      <input type="text" value.bind="textInsertPost" placeholder="nome">
+                      <button type="submit" disabled.bind="!textInsertPost">Inserisci</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3>PUT</h3>
+                    <form role="form" submit.trigger="put(idPut,textInsertPut)">
+                      <input type="text" value.bind="idPut" placeholder="id">
+                      <input type="text" value.bind="textInsertPut" placeholder="nome">
+                      <button type="submit" disabled.bind="!textInsertPut || !idPut">Modifica</button>
+                    </form>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3>DELETE</h3>
+                    <form role="form" submit.trigger="delete(idDelete)">
+                      <input type="text" value.bind="idDelete" placeholder="id">
+                      <button type="submit" disabled.bind="!idDelete">Elimina</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+</template>

@@ -1,0 +1,11 @@
+<template>
+    <ul>
+        <li repeat.for="file of files">
+           <input type="checkbox" checked.bind="file[0].checkedForDelete"/> ${$index+1} ===> ${file[0].name}
+        </li>
+    </ul>
+    <p>There are: ${totalElement} files</p>
+    <button type="button" click.delegate="clearList()">Clear list</button>
+    <button type="button" click.delegate="deleteElements()">Clear elements</button>
+    <hr>
+</template>

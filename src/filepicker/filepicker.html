@@ -1,0 +1,20 @@
+<template>
+    <require from="../images/images"></require>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="image-upload">
+                    <label for="file-input">
+                        <img src="http://goo.gl/pB9rpQ" />
+                    </label>
+                    <input id="file-input" type="file" files.bind="file" accept="image/*" style="visibility: hidden;" />
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <images file.bind="file"></images>
+            </div>
+        </div>
+    </div>
+</template>
